@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="1731146654093-1" author="wynny">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user"/>
+            </column>
+            <column name="created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nick_name" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(20)"/>
+        </createTable>
+        <addUniqueConstraint columnNames="nick_name" constraintName="uc_user_nick_name" tableName="user"/>
+    </changeSet>
+
+    <changeSet id="1731094095305-1" author="wynny">
+        <createTable tableName="chat_message">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chat_message"/>
+            </column>
+            <column name="created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chat_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sender_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recipient_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
